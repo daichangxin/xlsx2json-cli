@@ -3,20 +3,31 @@
   "version": "1.0.0",
   "description": "convert xlsx to json",
   "main": "index.js",
+  "bin": {
+    "xlsx2json": "./bin/index.js"
+  },
   "scripts": {
-    "build": "gulp --gulpfile ./gulpfile.js"
+    "build": "gulp --gulpfile ./gulpfile.js",
+    "test-json": "xlsx2json build ./test /Users/xin/workspace/xlsx2json-cli/test/output/config.json",
+    "test-dat": "xlsx2json build ./test /Users/xin/workspace/xlsx2json-cli/test/output/config.dat 1"
   },
   "author": "daichangxin",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^3.0.2",
+    "fs-extra": "^8.1.0",
+    "xlsx": "^0.15.1"
+  },
   "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "@types/node": "^12.7.9",
+    "bl": ">=0.9.5",
     "gulp": "^4.0.2",
     "rollup": "^1.22.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
-    "typescript": "^3.6.3",
-    "bl": ">=0.9.5"
+    "typescript": "^3.6.3"
   }
 }

@@ -12,13 +12,15 @@ gulp.task('build', async () => {
         plugins: [
             buildins(),
             node_resolve(),
-            commonjs(),
+            commonjs({
+                exclude: 'node_modules/**',
+            }),
             typescript({
                 check: false,
                 tsconfigOverride: {
                     compilerOptions: {
                         removeComments: true
-                    }
+                    },
                 },
                 include: /.*(.ts)$/
             }),
@@ -32,6 +34,7 @@ gulp.task('build', async () => {
     }).then(bundle => {
         return bundle.write({
             file: './bin/index.js',
+            banner: "#!/usr/bin/env node",
             format: 'iife',
             name: 'paw',
         })
