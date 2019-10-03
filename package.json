@@ -4,7 +4,7 @@
   "description": "convert xlsx to json",
   "main": "index.js",
   "scripts": {
-    "build":"gulp --gulpfile ./gulpfile.js"
+    "build": "gulp --gulpfile ./gulpfile.js"
   },
   "author": "daichangxin",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "bl": ">=0.9.5"
   }
 }
