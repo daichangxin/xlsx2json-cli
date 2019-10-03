@@ -1,8 +1,12 @@
 {
-  "name": "xlsx2json-cli",
+  "name": "@daichangxin/xlsx2json-cli",
   "version": "1.0.0",
   "description": "convert xlsx to json",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daichangxin/xlsx2json-cli.git"
+  },
   "bin": {
     "xlsx2json": "./bin/index.js"
   },
