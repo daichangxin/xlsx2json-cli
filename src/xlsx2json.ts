@@ -1,10 +1,17 @@
 const { readFile, utils } = require('xlsx');
-import { getFileName, walk } from './fileUtils';
 const fs = require('fs-extra');
-const zlib = require('zlib');
-const path = require('path');
+import { dirname } from 'path';
+import { deflateSync, inflateSync } from 'zlib';
+import { getFileName, walk } from './fileUtils';
 
-export function parse(target: string, output: string, compress?: string) {
+function test() {
+    const raw = fs.readFileSync('./test/config.dat');
+    const buffer = inflateSync(raw);
+    const str = buffer.toString();
+    console.log('result:', str);
+}
+
+export function parse(target: string, output: string, compress?: any) {
     console.log('target:', target);
     console.log('output:', output);
     console.log('compress:', compress);
@@ -21,14 +28,14 @@ export function parse(target: string, output: string, compress?: string) {
         return
     }
 
-    const dir = path.dirname(output);
+    const dir = dirname(output);
     if (!fs.existsSync(dir)) {
         fs.mkdirsSync(dir);
     }
 
     const str_data = JSON.stringify(configData);
     if (compress && (compress !== 'false' && compress !== '0')) {
-        const buffer: Buffer = zlib.deflateSync(str_data);
+        const buffer: Buffer = deflateSync(str_data);
         fs.writeFile(output, buffer, (err: any) => { });
     } else {
         fs.writeFile(output, str_data, (err: any) => { });
